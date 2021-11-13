@@ -20,7 +20,7 @@ public class Creture : MonoBehaviour
     //If creature nmoving to spesific point
     public void SetDirectionTo(Vector2 trans)
     {
-        direction = new Vector2(trans.x - transform.position.x > 0? 1 : -1, trans.y - transform.position.y > 0 ? 1 : -1);
+        direction = new Vector2(trans.x - transform.position.x, trans.y - transform.position.y).normalized;
     }
     //Get variable of direction outside the script
     public Vector2 GetDirection()
@@ -38,7 +38,6 @@ public class Creture : MonoBehaviour
         {
             //we get local scale and make it negetive
             var flip = -Mathf.Abs(rb.transform.localScale.x);
-            Debug.Log(flip);
             rb.transform.localScale = new Vector2(flip, rb.transform.localScale.y);
         }
     }
@@ -46,6 +45,7 @@ public class Creture : MonoBehaviour
     //Here we switch from current corutine to another
     public void StartState(IEnumerator coroutine)
     {
+        //Debug.Log(rb == null);
         //when we change state, creature resets its velocity
         rb.velocity = Vector2.zero;
         // if there is corutine playing stop it

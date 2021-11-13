@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class FightController : Creture
 {[Header("Components")]
-    [SerializeField] private Collision coll;
-    [SerializeField] private Rigidbody2D _rb;
-    [SerializeField] private BetterJumping _bt;
-    [SerializeField] private BoxCollider2D Damage;
-    
+    /*[SerializeField]*/ private Collision coll;
+    /*[SerializeField]*/ private Rigidbody2D _rb;
+    /*[SerializeField]*/ private BetterJumping _bj;
+   
+    [SerializeField] private BoxCollider2D StrikeCollider;
+
     [Space]
     [Header("Stats")]
     [SerializeField] private float _maxSpeed;
@@ -18,7 +19,6 @@ public class FightController : Creture
     [SerializeField] private float _movementAcceleration;
     [SerializeField] private float _GroundlinearDrag;
     [SerializeField] private float _AirlinearDrag;
-    [SerializeField] private float _dashDist;
     [SerializeField] private float _strikeDist;
     private Vector2 mousePosition, mouseDirection;
     [Space]
@@ -26,13 +26,15 @@ public class FightController : Creture
    
     [SerializeField] private bool wallJumped;
     [SerializeField] private bool wallSlide;
-    [SerializeField] private bool HasDashToken = true;
-    private bool active = true;
+    [SerializeField] public bool HasSlashToken = true;
+    private bool GravityActive = true;
     private bool _changingDirection;
+    private bool HasSlashed = false;
     [Space]
 
    
-    private bool hasDashed;
+
+
     public int side = 1;
 
   
@@ -40,49 +42,87 @@ public class FightController : Creture
     {
         coll = GetComponent<Collision>();
         _rb = GetComponent<Rigidbody2D>();
-        _bt = GetComponent<BetterJumping>();
+        _bj = GetComponent<BetterJumping>();
     }
 
     private void Update()
     {
         _horizontalDirection = GetInput().x;
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseDirection = (mousePosition - _rb.position).normalized; Debug.Log(mouseDirection);
+        GetMouseDirection();
 
-        if (Input.GetButtonDown("Jump") && coll.onGround && !coll.onWall) Jump();
-        if (Input.GetButtonDown("Dash")/*& HasDashToken*/) StartCoroutine(Dash(mouseDirection));
-        
+        if (Input.GetButtonDown("Jump") && coll.onGround && !coll.onWall) { Jump(); }
+        //   if (Input.GetButtonDown("Dash")/*& HasDashToken*/) StartCoroutine(Dash(mouseDirection));
+        if (Input.GetButtonDown("Fire1") && HasSlashToken == true) StartCoroutine(Slash(mouseDirection)); 
+
         Debug.DrawRay(transform.position, mouseDirection, Color.green);
+
     }
+
+    private void GetMouseDirection()
+    {
+
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseDirection = (mousePosition - _rb.position).normalized; 
+    }
+
     private void FixedUpdate()
     {
+        if (coll.onGround && HasSlashed == true) StartCoroutine(RechargingSlash());
         MoveCharacter();
-      
-
-        if (!coll.onGround) { ApplyAirLinearDrag(); } else ApplyGroundLinearDrag();
-        GetChangingDirection();
-        _bt.FallMultiplier(_rb, active);
        
+       if (!coll.onGround) { ApplyAirLinearDrag(); } else ApplyGroundLinearDrag(); 
+
+        GetChangingDirection();
+        _bj.FallMultiplier(_rb, GravityActive);
 
     }
-    private IEnumerator Dash(Vector2 dir)
+
+    private IEnumerator Slash(Vector2 dir)
     {
-        Debug.Log("DASH");
-        _rb.velocity = Vector2.zero;
-        active = false;
-        _GroundlinearDrag = 1;
-        _rb.gravityScale = 0;
-        _rb.AddForce(dir * _dashDist, ForceMode2D.Impulse);
-        Damage.gameObject.SetActive(true);
+        
+      
+        _rb.AddForce(dir * _strikeDist, ForceMode2D.Impulse);
+        StrikeCollider.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        HasSlashed = true;
+        HasSlashToken = false;
 
-        yield return new WaitForSeconds(0.5f);
-        Damage.gameObject.SetActive(false);
-        active = true;
-        _rb.gravityScale = 0;
-        _rb.velocity = Vector2.zero;
-        _GroundlinearDrag = 4;
+        GravityActive = false;
+        if (!coll.onGround) _rb.drag = 8;
+        GravityActive = true;
+
+        yield return new WaitForSeconds(0.2f);
+        StrikeCollider.gameObject.SetActive(false);
+      
     }
-   
+    private IEnumerator RechargingSlash()
+    {
+        if (HasSlashed == true)
+        {
+            
+            HasSlashToken = true;
+            HasSlashed = false;
+        }
+        yield return 0;
+    }
+    //private IEnumerator Dash(Vector2 dir)
+    //{
+    //    Debug.Log("DASH");
+    //    _rb.velocity = Vector2.zero;
+    //    active = false;
+    //    _GroundlinearDrag = 1;
+    //    _rb.gravityScale = 0;
+    //    _rb.AddForce(dir * _dashDist, ForceMode2D.Impulse);
+    //    DashCollider.gameObject.SetActive(true);
+
+    //    yield return new WaitForSeconds(0.5f);
+    //    DashCollider.gameObject.SetActive(false);
+    //    active = true;
+    //    _rb.gravityScale = 0;
+    //    _rb.velocity = Vector2.zero;
+    //    _GroundlinearDrag = 4;
+    //}
+
     private Vector2 GetInput()
     {
         return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -134,16 +174,6 @@ public class FightController : Creture
 
         return _changingDirection;
     }
-    //private void FixedUpdate()
-    //{
-    //    //Sharp slow down when moving up and slow landing
-    //    if (GC.isGrounded() == false && _rb.velocity.y > 0)
-    //    {
-    //        _rb.velocity = _rb.velocity * 0.9f;
-    //    }
-    //    //Moving from side to side on A and D when on ground
-    //    if ((GetDirection().x != 0 || GetDirection().y != 0) && GC.isGrounded())
-    //        _rb.velocity = new Vector2(speed * GetDirection().x, _rb.velocity.y);
-    //    //On shift if you are on ground dash to mouse position
+
    
 }

@@ -10,7 +10,7 @@ public class PointPatrol : MonoBehaviour
     private Rigidbody2D rb;
 
     private Creture creature;
-    private int destinationPointIndex;
+    private int destinationPointIndex = 0;
 
     private void Awake()
     {
@@ -21,23 +21,25 @@ public class PointPatrol : MonoBehaviour
 
     public IEnumerator DoPatrol()
     {
+        //creature.SetDirectionTo(points[destinationPointIndex].transform.position);
         while (true)
         {
             if (IsOnPoint())
             {
                 destinationPointIndex = (int)Mathf.Repeat(destinationPointIndex + 1, points.Length);
+                //creature.SetDirectionTo(points[destinationPointIndex].transform.position);
             }
-
             creature.SetDirectionTo(points[destinationPointIndex].transform.position);
-            rb.velocity = new Vector2(creature.GetDirection().x * speed, rb.velocity.y);
-
-            yield return null;
+           // Debug.Log(creature.GetDirection());
+            rb.velocity = new Vector2(creature.GetDirection().x * speed, creature.GetDirection().y * speed);
+            yield return new WaitForFixedUpdate();
         }
     }
 
     private bool IsOnPoint()
     {
-        var isOnSpot = (points[destinationPointIndex].position - transform.position).magnitude <= treshold;
+        var dist = (points[destinationPointIndex].position - transform.position).magnitude;
+        var isOnSpot = dist <= treshold;
         return isOnSpot;
     }
 }

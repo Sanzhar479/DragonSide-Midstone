@@ -12,6 +12,7 @@ public class ModifyHealth : MonoBehaviour
         if (healthComponent != null)
         {
             healthComponent.ModifyHealth(hpDelta);
+            Debug.Log(healthComponent);
         }
     }
 }

@@ -9,22 +9,28 @@ public class OnVisionEnter : MonoBehaviour
     [SerializeField] private float timeToDelay;
     [SerializeField] private Mob mob;
     [SerializeField] private PointPatrol patrol;
+    [SerializeField] private UnityEvent onNotice;
+    [SerializeField] private UnityEvent onVisionStop;
+    public bool inVision;
     private Animator anim;
     private float count = 0;
     private void Awake()
     {
         anim = GetComponentInParent<Animator>();
+        mob.StartState(patrol.DoPatrol());
     }
     //When you enter vision, it triggers notice animation after which enemy changes state
     //Also it resets the timer
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        anim.SetTrigger("Notice");
+        inVision = true;
+        onNotice?.Invoke();
         StopCoroutine(TimeDelayAfterExitVision());
         count = 0;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
+        inVision = true;
         StopCoroutine(TimeDelayAfterExitVision());
         count = 0;
     }
@@ -39,10 +45,11 @@ public class OnVisionEnter : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log(count);
             if (count >= timeToDelay)
             {
+                inVision = false;
                 mob.StartState(patrol.DoPatrol());
+                onVisionStop?.Invoke();
                 break;
             }
             count++;

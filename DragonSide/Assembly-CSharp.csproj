@@ -47,13 +47,14 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.11</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.12</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2021.1.21f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
+    <Compile Include="Assets\Script\GameObjectExtensions.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\PlayerMovePhysics.cs" />
     <Compile Include="Assets\Script\Creature\AI\Patrol.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
@@ -61,14 +62,28 @@
     <Compile Include="Assets\Script\Creature\Player\FightController.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
+    <Compile Include="Assets\Collision.cs" />
+    <Compile Include="Assets\Script\DialougeSystem\DialogueBaseClass.cs" />
     <Compile Include="Assets\Script\Creature\Creture.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Models\UnityCharacter\Scripts\CharacterMovement2D.cs" />
+    <Compile Include="Assets\Player things\RippleEffect\RippleEffect.cs" />
     <Compile Include="Assets\Script\Creature\Player\Control.cs" />
+    <Compile Include="Assets\Script\PathNode.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\InvokeEventFromInspector.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
+    <Compile Include="Assets\Script\LayerCheck.cs" />
+    <Compile Include="Assets\Mob2.cs" />
+    <Compile Include="Assets\Script\Creature\Health\HealthComponent.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics2D.cs" />
     <Compile Include="Assets\Script\Networking\CreateAndJoinRooms.cs" />
+    <Compile Include="Assets\Script\DialougeSystem\SoundManager.cs" />
+    <Compile Include="Assets\PathFinding\TileMap.cs" />
+    <Compile Include="Assets\Player things\GhostTrail.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\SimpleElevator.cs" />
+    <Compile Include="Assets\OnTrigger.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\FadeOutNearbyObjects\CinemachineFadeOutNearbyObjects.cs" />
     <Compile Include="Assets\Script\Networking\ConnectToServer.cs" />
     <Compile Include="Assets\Script\Creature\AI\OnVisionEnter.cs" />
@@ -81,46 +96,57 @@
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\ExampleHelpWindow.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
+    <Compile Include="Assets\Script\SpawnComponent.cs" />
+    <Compile Include="Assets\Script\Creature\AI\LookAt.cs" />
+    <Compile Include="Assets\Script\DialougeSystem\DialogueLine.cs" />
+    <Compile Include="Assets\Script\Pathfinding.cs" />
+    <Compile Include="Assets\Script\Creature\AI\Shooting.cs" />
+    <Compile Include="Assets\PathFinding\Grid.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\PlayerMove.cs" />
+    <Compile Include="Assets\Script\Creature\AI\Mob1.cs" />
+    <Compile Include="Assets\Player things\AnimationScript.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\Scripting\ScriptingExample.cs" />
     <Compile Include="Assets\Script\Creature\GroundCheck.cs" />
+    <Compile Include="Assets\Projectile.cs" />
     <Compile Include="Assets\Script\Creature\AI\PointPatrol.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\MixingCameraBlend.cs" />
+    <Compile Include="Assets\DestroyComponent.cs" />
+    <Compile Include="Assets\OnCollision.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\CameraMagnets\CameraMagnetProperty.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\SpawnInCircle.cs" />
+    <Compile Include="Assets\Script\InteractableComponent.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleSprite.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\PlayerMoveOnSphere.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleAudio.cs" />
+    <Compile Include="Assets\EnterTriggerComponent.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics.cs" />
     <Compile Include="Assets\Script\Door.cs" />
+    <Compile Include="Assets\Script\DoInteractionComponent.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\CameraMagnets\CameraMagnetTargetController.cs" />
+    <Compile Include="Assets\lookAtMouse.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\Trigger volumes\GenericTrigger.cs" />
+    <Compile Include="Assets\Player things\Movement.cs" />
+    <Compile Include="Assets\ColorChange.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Models\UnityCharacter\Scripts\CharacterMovement.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Models\UnityCharacter\Scripts\CharacterMovementNoCamera.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\ActivateCamOnPlay.cs" />
     <Compile Include="Assets\Script\Animation.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\DualTarget\PointAtAimTarget.cs" />
+    <Compile Include="Assets\Script\Creature\Health\ModifyHealth.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
+    <Compile Include="Assets\Script\Player\BetterJumping.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\ActivateCameraWithDistance.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\Anywhere Door\TagChanger.cs" />
-    <Compile Include="Assets\Script\Creature\Health\ModifyHealth.cs" />
-    <Compile Include="Assets\Script\Creature\Health\HealthComponent.cs" />
-    <Compile Include="Assets\Collision.cs" />
-    <Compile Include="Assets\Script\BetterJumping.cs" />
-    <Compile Include="Assets\Player things\AnimationScript.cs" />
-    <Compile Include="Assets\Player things\GhostTrail.cs" />
-    <Compile Include="Assets\Player things\RippleEffect\RippleEffect.cs" />
-    <Compile Include="Assets\Player things\Movement.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUtils.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics2D.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModuleSprite.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUI.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModuleAudio.cs" />
-    <Compile Include="Assets\lookAtMouse.cs" />
+    <Compile Include="Assets\Script\Networking\SpawnPlayers.cs" />
+    <Compile Include="Assets\Script\DialougeSystem\DialogueHolder.cs" />
+    <Compile Include="Assets\DialogueInteractable.cs" />
+    <Compile Include="Assets\EnterStayInteractComponent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -14,8 +14,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
+    - Assets/Design/Audio/snd_txtsans.wav
+    - Assets/Design/Audio/snd_txtsans.wav.meta
+    - Assets/Design/Audio/snd_txtund2.wav
+    - Assets/Design/Audio/snd_txtund2.wav.meta
+    - Assets/FollowPlayer.cs
+    - Assets/FollowPlayer.cs.meta
+    - Assets/Prefab/UI Canvas.prefab
+    - Assets/Prefab/UI Canvas.prefab.meta
+    - Assets/Scenes/Hall.unity
+    - Assets/Scenes/test.unity
+    - Assets/Scenes/test.unity.meta
+    - Assets/Script/Creature/Player/Control.cs
+    - Assets/Script/DialougeSystem.meta
+    - Assets/Script/DialougeSystem/DialogueBaseClass.cs
+    - Assets/Script/DialougeSystem/DialogueBaseClass.cs.meta
+    - Assets/Script/DialougeSystem/DialogueHolder.cs
+    - Assets/Script/DialougeSystem/DialogueHolder.cs.meta
+    - Assets/Script/DialougeSystem/DialogueLine.cs
+    - Assets/Script/DialougeSystem/DialogueLine.cs.meta
+    - Assets/Script/DialougeSystem/SoundManager.cs
+    - Assets/Script/DialougeSystem/SoundManager.cs.meta
+    - Assets/Script/Networking/SpawnPlayers.cs
+    - Assets/Script/Networking/SpawnPlayers.cs.meta
+    - Assets/Script/Player.meta
+    - Assets/Script/Player/BetterJumping.cs
+    - Assets/Script/Player/BetterJumping.cs.meta
+    - Packages/manifest.json
+    - Packages/packages-lock.json
+    - ProjectSettings/EditorBuildSettings.asset
     - 
-    m_Values: 01
+    m_Values: 000000000000000000000000000000000000000000000000000000000000
   RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 

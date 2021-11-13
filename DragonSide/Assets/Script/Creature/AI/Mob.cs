@@ -6,47 +6,73 @@ public class Mob : Creture
 {
     //target
     [SerializeField] private Transform playerTransform;
-    [SerializeField] private float acceleration;
-    [SerializeField] private float velocity;
+    [SerializeField] private Grid grid;
+    private Pathfinding pathFinding;
     //Both gain speed, slowly accelerating to target
-    public IEnumerator AccelerateToPlayerX()
+    private void Start()
     {
-        while (true)
-        {
-            SetDirectionTo(playerTransform.position);
-            rb.AddForce(new Vector2(rb.mass * acceleration * GetDirection().x, 0.0f));
-            yield return null;
-        }
+        pathFinding = grid.GetMap();
     }
-    public IEnumerator AccelerateToPlayerY()
-    {
-        while (true)
-        {
-            SetDirectionTo(playerTransform.position);
-            rb.AddForce(new Vector2(0.0f, rb.mass * acceleration * GetDirection().y));
-            yield return null;
-        }
-    }
-    //These ones set one stable velocity with which enemy is moving to target 
-    public IEnumerator MoveToPlayerX()
-    {
-        while (true)
-        {
-            SetDirectionTo(playerTransform.position);
-            rb.velocity = new Vector2(GetDirection().x * velocity, rb.velocity.y);
-            yield return null;
-        }
-    }
-    public IEnumerator MoveToPlayerY()
+    public Vector2 AccelerateToPlayer(float acceleration)
     {
         SetDirectionTo(playerTransform.position);
-        rb.velocity = new Vector2(rb.velocity.x, GetDirection().y * velocity);
-        yield return new WaitForFixedUpdate();
+        return new Vector2(rb.velocity.x + acceleration * Time.deltaTime, rb.velocity.y + acceleration * Time.deltaTime);
     }
-    //When target is on vision switch corutine to chasing
-    public void Notice(/*IEnumerator coroutine*/)
+    //These ones set one stable velocity with which enemy is moving to target 
+    public Vector2 MoveToPlayer(float velocity)
     {
-        StartState(AccelerateToPlayerX());
+            SetDirectionTo(playerTransform.position);
+            return GetDirection() * velocity;
+    }
+    //Mob moves faster when it's far and slows down when close
+    //Also Mob keep on spacific distance from player
+    public Vector2 Arrival(float velocity)
+    {
+            SetDirection(playerTransform.position - rb.transform.position);
+            return GetDirection() * velocity;
+    }
+    public Vector2 Avoid(float velocity, float distance)
+    {
+        SetDirectionTo(-playerTransform.position);
+        var dist = (rb.transform.position - playerTransform.position).magnitude;
+        if (dist <= distance)
+            return -velocity * new Vector2(GetDirection().x, GetDirection().y).normalized;
+        else return Vector2.zero;
     }
 
+    public Vector2 SetPathFindingA(float velocity)
+    {
+        List<Vector2> pathVectorList = pathFinding.FindPath(rb.transform.position, playerTransform.position);
+        Debug.Log(pathVectorList.Count);
+        if (pathVectorList != null && pathVectorList.Count > 1)
+        {
+            pathVectorList.RemoveAt(0);
+        }
+        SetDirectionTo(pathVectorList[0]);
+        return GetDirection() * velocity;
+    }
+    protected IEnumerator AI(Vector2 ai_)
+    {
+        while (true)
+        {
+            rb.velocity = ai_;
+            yield return null;
+        }
+    }
+    protected IEnumerator AI(Vector2 ai_, Vector2 ai1_)
+    {
+        while (true)
+        {
+            rb.velocity = ai_ + ai1_;
+            yield return null;
+        }
+    }
+    protected IEnumerator AI(Vector2 ai_, Vector2 ai1_, Vector2 ai2_)
+    {
+        while (true)
+        {
+            rb.velocity = ai_ + ai1_ + ai2_;
+            yield return null;
+        }
+    }
 }

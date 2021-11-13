@@ -8,7 +8,7 @@ public class CamZoom : MonoBehaviour
     [SerializeField] private GameObject player;
     private float originalY;
     [SerializeField] private float ratio;
-
+    [SerializeField] private float limit;
     private void Awake()
     {
         cam = GetComponent<CinemachineVirtualCamera>();
@@ -16,6 +16,7 @@ public class CamZoom : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        cam.m_Lens.OrthographicSize = 5.0f + (player.transform.position.y - originalY) * ratio;
+        if (5.0f + (player.transform.position.y - originalY) * ratio <= limit)
+            cam.m_Lens.OrthographicSize = 5.0f + (player.transform.position.y - originalY) * ratio;
     }
 }

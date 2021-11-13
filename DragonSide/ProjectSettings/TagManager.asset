@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - DamageHitBox
+  - Interectable
   layers:
   - Default
   - TransparentFX
@@ -17,10 +18,10 @@ TagManager:
   - Player
   - Vision
   - Ground
-  - 
-  - 
-  - 
-  - 
+  - Projectile
+  - Interactable
+  - PlayerUI
+  - PlayerStrikerCollider
   - 
   - 
   - 

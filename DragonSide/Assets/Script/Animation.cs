@@ -29,12 +29,12 @@ public class Animation : MonoBehaviour
         }
         else if (rb.dir.x < 1.0f && rb.dir.x > -1.0f || rb.dir.y < 1.0f && rb.dir.y > -1.0f)
             anim.SetBool("Moving", false);
-        if (rb.dir.x > 0 && sprite.flipX == true)
+        if (rb.dir.x > 0 && rb.transform.localScale.x < 0)
         {
-            sprite.flipX = false;
-        } else if (rb.dir.x < 0 && sprite.flipX == false)
+            rb.transform.localScale = new Vector2(Mathf.Abs(rb.transform.localScale.x), rb.transform.localScale.y);
+        } else if (rb.dir.x < 0 && rb.transform.localScale.x > 0)
         {
-            sprite.flipX = true;
+            rb.transform.localScale = new Vector2(-Mathf.Abs(rb.transform.localScale.x), rb.transform.localScale.y);
         }   
         anim.SetFloat("dirx", rb.dir.x);
         anim.SetFloat("diry", rb.dir.y);
