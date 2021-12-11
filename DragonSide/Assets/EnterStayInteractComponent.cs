@@ -16,7 +16,7 @@ public class EnterStayInteractComponent : MonoBehaviour
         
         if (!other.gameObject.IsInLayer(_layer)) return;
         if (!string.IsNullOrEmpty(_tag) && !other.gameObject.CompareTag(_tag)) return;
-        if (Input.GetKey(KeyCode.E)) { _action?.Invoke(other.gameObject); Debug.Log("interacted"); }
+        if (Input.GetKey(KeyCode.E)) { _action?.Invoke(other.gameObject);  Debug.Log("interacted"); }
         
     }
 }

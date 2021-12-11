@@ -16,6 +16,7 @@ public class OnCollision : MonoBehaviour
         }
         if (OnCollisionEnter != null)
         {
+            Debug.Log("=");
             OnCollisionEnter?.Invoke();
             return;
         }

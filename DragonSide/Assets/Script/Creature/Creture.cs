@@ -6,9 +6,8 @@ public class Creture : MonoBehaviour
 {
     private Vector2 direction = new Vector2(0.0f, 0.0f);
     //Current corutine and state of the mob
-    private IEnumerator current;
     protected Rigidbody2D rb;
-    private void Awake()
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -30,32 +29,10 @@ public class Creture : MonoBehaviour
     //Flip the sprite and everything inside of game object when switching velocity x
     public void FlipX()
     {
-        if (rb.velocity.x > 0)
-        {
-            rb.transform.localScale = new Vector2(Mathf.Abs(rb.transform.localScale.x), rb.transform.localScale.y);
-        }
-        if (rb.velocity.x < 0)
-        {
-            //we get local scale and make it negetive
-            var flip = -Mathf.Abs(rb.transform.localScale.x);
-            rb.transform.localScale = new Vector2(flip, rb.transform.localScale.y);
-        }
+        if ((rb.velocity.x > 0f && rb.transform.localScale.x < 0f) || (rb.velocity.x < 0f && rb.transform.localScale.x > 0f))
+            rb.transform.localScale = Vector3.Scale(rb.transform.localScale, new Vector3(-1f, 1f, 1f));
     }
-    //Creature can have only one corutine playing
-    //Here we switch from current corutine to another
-    public void StartState(IEnumerator coroutine)
-    {
-        //Debug.Log(rb == null);
-        //when we change state, creature resets its velocity
-        rb.velocity = Vector2.zero;
-        // if there is corutine playing stop it
-        if (current != null)
-            StopCoroutine(current);
-        //Set new corutine to current one
-        current = coroutine;
-        StartCoroutine(coroutine);
-    }
-    private void Update()
+    private void LateUpdate()
     {
         FlipX();
     }

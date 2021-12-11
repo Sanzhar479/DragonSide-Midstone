@@ -70,11 +70,11 @@
     <Compile Include="Assets\Script\Creature\Player\Control.cs" />
     <Compile Include="Assets\Script\PathNode.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\InvokeEventFromInspector.cs" />
+    <Compile Include="Assets\EnterStayInteractComponent.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Script\LayerCheck.cs" />
-    <Compile Include="Assets\Mob2.cs" />
     <Compile Include="Assets\Script\Creature\Health\HealthComponent.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics2D.cs" />
     <Compile Include="Assets\Script\Networking\CreateAndJoinRooms.cs" />
@@ -86,6 +86,7 @@
     <Compile Include="Assets\OnTrigger.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\FadeOutNearbyObjects\CinemachineFadeOutNearbyObjects.cs" />
     <Compile Include="Assets\Script\Networking\ConnectToServer.cs" />
+    <Compile Include="Assets\DialogueInteractable.cs" />
     <Compile Include="Assets\Script\Creature\AI\OnVisionEnter.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\Anywhere Door\PlayerMovement.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\ThirdPersonFollowDistanceModifier.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\DualTarget\MoveAimTarget.cs" />
     <Compile Include="Assets\Script\Networking\CamZoom.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\Anywhere Door\PlayerLookAt.cs" />
+    <Compile Include="Assets\FightControllerMulti.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\ExampleHelpWindow.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
@@ -102,9 +104,9 @@
     <Compile Include="Assets\Script\Pathfinding.cs" />
     <Compile Include="Assets\Script\Creature\AI\Shooting.cs" />
     <Compile Include="Assets\PathFinding\Grid.cs" />
+    <Compile Include="Assets\Script\DialougeSystem\DialogueHolder.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\PlayerMove.cs" />
-    <Compile Include="Assets\Script\Creature\AI\Mob1.cs" />
     <Compile Include="Assets\Player things\AnimationScript.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\Scripting\ScriptingExample.cs" />
@@ -118,6 +120,7 @@
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\SpawnInCircle.cs" />
     <Compile Include="Assets\Script\InteractableComponent.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModuleSprite.cs" />
+    <Compile Include="Assets\velocity.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\PlayerMoveOnSphere.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModuleAudio.cs" />
@@ -129,6 +132,7 @@
     <Compile Include="Assets\lookAtMouse.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\Trigger volumes\GenericTrigger.cs" />
+    <Compile Include="Assets\TestPlugin.cs" />
     <Compile Include="Assets\Player things\Movement.cs" />
     <Compile Include="Assets\ColorChange.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Models\UnityCharacter\Scripts\CharacterMovement.cs" />
@@ -140,13 +144,19 @@
     <Compile Include="Assets\Script\Creature\Health\ModifyHealth.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
+    <Compile Include="Assets\ControlMultiplayer.cs" />
     <Compile Include="Assets\Script\Player\BetterJumping.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Shared\Scripts\ActivateCameraWithDistance.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\Anywhere Door\TagChanger.cs" />
     <Compile Include="Assets\Script\Networking\SpawnPlayers.cs" />
-    <Compile Include="Assets\Script\DialougeSystem\DialogueHolder.cs" />
-    <Compile Include="Assets\DialogueInteractable.cs" />
-    <Compile Include="Assets\EnterStayInteractComponent.cs" />
+    <Compile Include="Assets\SceneChanger.cs" />
+    <Compile Include="Assets\PlayerMenuComponent.cs" />
+    <Compile Include="Assets\StateMachine1.cs" />
+    <Compile Include="Assets\Trails.cs" />
+    <Compile Include="Assets\StateMachine2.cs" />
+    <Compile Include="Assets\StateMachine3.cs" />
+    <Compile Include="Assets\AnimationMultiplayer.cs" />
+    <Compile Include="Assets\DialogueHolderMulti.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -184,6 +194,7 @@
     <None Include="Assets\DOTween\readme.txt" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Photon\PhotonUnityNetworking\link.xml" />
+    <None Include="Assets\Native_plugin_test.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>

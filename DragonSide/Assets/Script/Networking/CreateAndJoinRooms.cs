@@ -8,7 +8,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
     public TMP_InputField inputCreate;
     public TMP_InputField inputJoin;
-
+    [SerializeField] private string LevelName;
     public void CreateRoom()
     {
         PhotonNetwork.CreateRoom(inputCreate.text);
@@ -20,6 +20,15 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Hall_Multi");
+        PhotonNetwork.LoadLevel(LevelName);
+    }
+
+    public  void OnSwitchScene(string sceneName)
+    {
+        LevelName = sceneName;
+    }
+    private void Update()
+    {
+        Debug.Log(LevelName);
     }
 }

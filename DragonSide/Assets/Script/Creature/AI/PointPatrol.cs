@@ -16,24 +16,15 @@ public class PointPatrol : MonoBehaviour
     {
         creature = GetComponent<Creture>();
         rb = GetComponent<Rigidbody2D>();
-        creature.StartState(DoPatrol());
+
     }
 
-    public IEnumerator DoPatrol()
+    public void DoPatrol()
     {
-        //creature.SetDirectionTo(points[destinationPointIndex].transform.position);
-        while (true)
-        {
-            if (IsOnPoint())
-            {
-                destinationPointIndex = (int)Mathf.Repeat(destinationPointIndex + 1, points.Length);
-                //creature.SetDirectionTo(points[destinationPointIndex].transform.position);
-            }
-            creature.SetDirectionTo(points[destinationPointIndex].transform.position);
-           // Debug.Log(creature.GetDirection());
-            rb.velocity = new Vector2(creature.GetDirection().x * speed, creature.GetDirection().y * speed);
-            yield return new WaitForFixedUpdate();
-        }
+        if (IsOnPoint())
+            destinationPointIndex = (int)Mathf.Repeat(destinationPointIndex + 1, points.Length);
+        creature.SetDirectionTo(points[destinationPointIndex].transform.position);
+        rb.velocity = new Vector2(creature.GetDirection().x * speed, creature.GetDirection().y * speed);
     }
 
     private bool IsOnPoint()

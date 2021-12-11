@@ -5,25 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Hall.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/MiliannaRoom.unity
-    guid: a6256e773eac3f04b93ed4460279a9a6
-  - enabled: 0
-    path: Assets/Scenes/Fight.unity
-    guid: 9c942f4ac9278444f839bcd6fbfddc9f
-  - enabled: 0
-    path: Assets/Scenes/Multiplayer_loading.unity
-    guid: 8fe1a0bf25a5f7f44b1b5c6a10f75a78
-  - enabled: 0
-    path: Assets/Scenes/Lobby.unity
-    guid: 195de6db685cbd649970d0415878525b
-  - enabled: 0
-    path: Assets/Scenes/Hall_Multi.unity
-    guid: b7907d62fe6fd4045920ef52e4078ddf
   - enabled: 1
-    path: Assets/Scenes/test.unity
-    guid: cc785004513f34f408de8d6b2464b0e7
+    path: Assets/Scenes/MainMenu.unity
+    guid: 195de6db685cbd649970d0415878525b
+  - enabled: 1
+    path: Assets/Scenes/Singleplayer/Hall.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Singleplayer/Fight.unity
+    guid: 9c942f4ac9278444f839bcd6fbfddc9f
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerMaps/Multiplayer_loading.unity
+    guid: 8fe1a0bf25a5f7f44b1b5c6a10f75a78
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerMaps/Fight-multiplayer.unity
+    guid: f55ecc04d1115c949996c576abcd477a
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerMaps/Hall-multiplayer.unity
+    guid: 063f1fd8a7a19f94fbdd33384ec41387
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: e8803c87b98607d44a78e822dec984bd
   m_configObjects: {}

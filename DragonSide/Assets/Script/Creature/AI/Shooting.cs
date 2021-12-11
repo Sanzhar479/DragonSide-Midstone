@@ -19,21 +19,21 @@ public class Shooting : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
     }
     //if player is in vision spawn ammo after certain time
-    private IEnumerator Shoot()
-    { 
-        while (true)
-        {
-            //if player is no more in vision then enemy stops shooting
-            if (vision.inVision == false)
-                break;
-            ammo.Spawn();
-            yield return new WaitForSeconds(rangeBetweenShoot);
-        }
-    }
-    public void StartShooting()
-    {
-        StartCoroutine(Shoot());
-    }
+    //private IEnumerator Shoot()
+    //{ 
+    //    while (true)
+    //    {
+    //        //if player is no more in vision then enemy stops shooting
+    //        if (vision.inVision == false)
+    //            break;
+    //        ammo.Spawn();
+    //        yield return new WaitForSeconds(rangeBetweenShoot);
+    //    }
+    //}
+    //public void StartShooting()
+    //{
+    //    StartCoroutine(Shoot());
+    //}
     private void Update()
     {
         LookAtPlayer();

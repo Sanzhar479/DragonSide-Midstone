@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FightController : Creture
-{[Header("Components")]
+public class FightController : MonoBehaviour
+{
+    [Header("Components")]
     /*[SerializeField]*/ private Collision coll;
     /*[SerializeField]*/ private Rigidbody2D _rb;
     /*[SerializeField]*/ private BetterJumping _bj;
@@ -44,7 +45,10 @@ public class FightController : Creture
         _rb = GetComponent<Rigidbody2D>();
         _bj = GetComponent<BetterJumping>();
     }
-
+    public Collision GetCol()
+    {
+        return coll;
+    }
     private void Update()
     {
         _horizontalDirection = GetInput().x;
