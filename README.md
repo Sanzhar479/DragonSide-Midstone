@@ -10,5 +10,7 @@ and views on the world and people.
 
 GDD Link:
 https://1drv.ms/w/s!AgEnseAukZU-0zxqeB9RUrwyxt9p?e=sqHpVj
+
+
 Itch with the link for a playable demo:
 https://sanzharz.itch.io/dragon-side
