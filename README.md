@@ -1,4 +1,5 @@
 Early version of our Capstone project at Humber college.
+
 “Dragon side”. Is a single-player story-driven, action RPG 
 with the pixelated art style. It will also include fighting scenes; they will consist of fast 
 manoeuvring and dashing between groups of enemies. The main inspiration for this game is 
